@@ -1,0 +1,265 @@
+MySQL Shell 8.0.12
+
+Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+
+
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect -c root@localhost
+The -c option is deprecated, please use --mysql or -mc instead
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 54
+Server version: 8.0.12 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > \use evaluacion1
+Default schema set to `evaluacion1`.
+Fetching table and column names from `evaluacion1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables;
++-----------------------+
+| Tables_in_evaluacion1 |
++-----------------------+
+| carrera               |
+| estudiantes           |
+| jobs                  |
+| materias              |
+| nueva_carrera         |
+| nueva_carrerarota     |
+| paises                |
+| personal              |
+| personal2             |
++-----------------------+
+9 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc carrera;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| nombre    | varchar(50) | YES  |     | NULL    |       |
+| creditos  | int(11)     | YES  |     | NULL    |       |
+| semestres | int(11)     | YES  |     | NULL    |       |
+| area      | varchar(50) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0020 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select from mysql.users;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from mysql.users' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from mysql.users;
+ERROR: 1146 (42S02): Table 'mysql.users' doesn't exist
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select * from mysql.user;
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+| Host      | User             | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher | x509_issuer | x509_subject | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                                                  | password_expired | password_last_changed | password_lifetime | account_locked | Create_role_priv | Drop_role_priv | Password_reuse_history | Password_reuse_time |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+| %         | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$g#6-i\,6Tg;       A9<wQW6kZKRaWxBAy7GFQh4ErCBDmNEgmBDu.xEOsHD8k5 | N                | 2018-08-28 16:59:36   |              NULL | N              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.infoschema | Y           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2018-08-28 16:59:03   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.session    | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | Y          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2018-08-28 16:59:02   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | mysql.sys        | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | N                | 2018-08-28 16:59:03   |              NULL | Y              | N                | N              |                   NULL |                NULL |
+| localhost | root             | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |             0 |           0 |               L>Q(J?axNdIFQe5XYzODYnJ.0itCVsurv1ZLNU9oXti.9XxV0 | N                | 2018-08-28 16:59:36   |              NULL | N              | Y                | Y              |                   NULL |                NULL |
+| localhost | solo_select      | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$zK[>TbC g6[%t{BO!mjqR99XhXkUJlxx0MmrBP.VtPLn43huFJEmmDxydYUD | N                | 2018-09-06 12:45:03   |              NULL | N              | N                | N              |                   NULL |                NULL |
+| localhost | solo_tabla       | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$I|^a;/<5"2#* aj"x;F2jFdJTY4kl9vDxTpuq77Wrygy4zmsMaB6Q19q9HaaBA | N                | 2018-09-06 12:39:59   |              NULL | N              | N                | N              |                   NULL |                NULL |
+| localhost | total_user       | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | caching_sha2_password | $A$005$=O73*Qc;C*/T@b:BN/Aq4PNkXDEd/ffjhXMWwt4bpo7m27yeYK0f.d0MI. | N                | 2018-09-06 12:26:31   |              NULL | N              | N                | N              |                   NULL |                NULL |
++-----------+------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+------------------------------------------------------------------------+------------------+-----------------------+-------------------+----------------+------------------+----------------+------------------------+---------------------+
+8 rows in set (0.0306 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select from mysql.user;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from mysql.user' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > create user 'prueba'@'localhost' identified by 'perrito';                                             create user 'prueba'@'localhost' identified by 'perrito';
+Query OK, 0 rows affected (0.4788 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > select user from mysql.user;
++------------------+
+| user             |
++------------------+
+| root             |
+| mysql.infoschema |
+| mysql.session    |
+| mysql.sys        |
+| prueba           |
+| root             |
+| solo_select      |
+| solo_tabla       |
+| total_user       |
++------------------+
+9 rows in set (0.0006 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > \connect -c prueba@localhost
+The -c option is deprecated, please use --mysql or -mc instead
+Creating a Classic session to 'prueba@localhost'
+Please provide the password for 'prueba@localhost': *******
+Save password for 'prueba@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 58
+Server version: 8.0.12 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > shot databases;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shot databases' at line 1
+
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
++--------------------+
+1 row in set (0.0009 sec)
+
+ MySQL  localhost:3306 ssl  SQL > \connect -c root@localhost
+The -c option is deprecated, please use --mysql or -mc instead
+Creating a Classic session to 'root@localhost'
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 59
+Server version: 8.0.12 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > alter user 'prueba'@'localhost' identified bye 'perrito';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bye 'perrito'' at line 1
+
+ MySQL  localhost:3306 ssl  SQL > \use evaluacion1
+Default schema set to `evaluacion1`.
+Fetching table and column names from `evaluacion1` for auto-completion... Press ^C to stop.
+                                               alter user 'prueba'@'localhost' identified by 'perrito';MySQL  localhost:3306 ssl  evaluacion1  SQL > alter user 'prueba'@'localhost' identified by 'perrito'Query OK, 0 rows affected (0.1906 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc estudiantes;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| no_control       | varchar(10)  | YES  |     | NULL    |       |
+| nombre           | varchar(50)  | YES  |     | NULL    |       |
+| apellido_materno | varchar(50)  | YES  |     | NULL    |       |
+| apellido_paterno | varchar(50)  | YES  |     | NULL    |       |
+| direccion        | varchar(100) | YES  |     | NULL    |       |
+| fecha_nacimiento | date         | YES  |     | NULL    |       |
+| lugar_nacimiento | varchar(50)  | YES  |     | NULL    |       |
+| pais_nacimiento  | varchar(50)  | YES  |     | NULL    |       |
+| genero           | varchar(50)  | YES  |     | NULL    |       |
+| no_telefono      | varchar(50)  | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+10 rows in set (0.0024 sec)
+                                               grant select (nombre, apellido_materno, apellido_paterno, no_control) on
+                                           ... ;rant select (nombre, apellido_materno, apellido_paterno, no_control) on
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables;
++-----------------------+
+| Tables_in_evaluacion1 |
++-----------------------+
+| carrera               |
+| estudiantes           |
+| jobs                  |
+| materias              |
+| nueva_carrera         |
+| nueva_carrerarota     |
+| paises                |
+| personal              |
+| personal2             |
++-----------------------+
+9 rows in set (0.0021 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > 
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > show tables;
++-----------------------+
+| Tables_in_evaluacion1 |
++-----------------------+
+| carrera               |
+| estudiantes           |
+| jobs                  |
+| materias              |
+| nueva_carrera         |
+| nueva_carrerarota     |
+| paises                |
+| personal              |
+| personal2             |
++-----------------------+
+9 rows in set (0.0015 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant select (nombre, apellido_materno, apellido_paterno, no_control) on evaluacion1.estudiantes to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.2014 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc materia;
+ERROR: 1146 (42S02): Table 'evaluacion1.materia' doesn't exist
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc materias;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| nombre          | varchar(100) | YES  |     | NULL    |       |
+| creditos        | int(11)      | YES  |     | NULL    |       |
+| horas_teoricas  | int(11)      | YES  |     | NULL    |       |
+| horas_practicas | int(11)      | YES  |     | NULL    |       |
+| carrera         | varchar(3)   | YES  |     | NULL    |       |
+| semestre        | int(11)      | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+6 rows in set (0.0019 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant insert (nombre, creditos) on evaluacion1.materias to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1858 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant select (nombre) on evaluacion1.materias to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1022 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc carrera;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| nombre    | varchar(50) | YES  |     | NULL    |       |
+| creditos  | int(11)     | YES  |     | NULL    |       |
+| semestres | int(11)     | YES  |     | NULL    |       |
+| area      | varchar(50) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0020 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant insert on evaluacion1.carrera to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1180 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant update on evaluacion1.carrera to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1075 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc paises;
++------------+----------------------------------------------------+------+-----+---------+----------------+
+| Field      | Type                                               | Null | Key | Default | Extra          |
++------------+----------------------------------------------------+------+-----+---------+----------------+
+| clave      | int(11)                                            | NO   | PRI | NULL    | auto_increment |
+| nombre     | varchar(50)                                        | NO   | UNI | NULL    |                |
+| poblacion  | int(11)                                            | YES  |     | 1       |                |
+| continente | enum('Africa','America','Asia','Oceania','Europa') | YES  |     | NULL    |                |
++------------+----------------------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant select on evaluacion1.paises to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1112 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > desc personal;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| clave        | int(11)     | YES  |     | NULL    |       |
+| nombre       | varchar(50) | YES  |     | NULL    |       |
+| apellido     | varchar(50) | YES  |     | NULL    |       |
+| departamento | varchar(50) | YES  |     | NULL    |       |
+| salario      | float       | YES  |     | NULL    |       |
+| rfc          | varchar(50) | NO   | PRI | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.0019 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL > grant drop on evaluacion1.personal to 'prueba'@'localhost';
+Query OK, 0 rows affected (0.1828 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion1  SQL >

@@ -1,0 +1,248 @@
+Please provide the password for 'root@localhost': ****
+Save password for 'root@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 2
+Server version: 5.5.61 MySQL Community Server (GPL)
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306  SQL > create table carrera(
+                          ... nombre int,
+                          ... creditos varchar(50),
+                          ... semestres int,
+                          ... email varchar(50));
+ERROR: 1046 (3D000): No database selected
+
+ MySQL  localhost:3306  SQL > show tables;
+ERROR: 1046 (3D000): No database selected
+
+ MySQL  localhost:3306  SQL >  create database Estudiantes_1;
+Query OK, 1 row affected (0.0671 sec)
+
+ MySQL  localhost:3306  SQL > \use estudiantes_1
+Default schema set to `estudiantes_1`.
+Fetching table and column names from `estudiantes_1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306  estudiantes_1  SQL > create table carrera(
+                                         ... nombre varchar(50),
+                                         ... creditos varchar (50),
+                                         ... semestres int,
+                                         ... email varchar(50));
+Query OK, 0 rows affected (0.2513 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > show tables;
++-------------------------+
+| Tables_in_estudiantes_1 |
++-------------------------+
+| carrera                 |
++-------------------------+
+1 row in set (0.0005 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > show table carrera;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'carrera' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc carrera;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| nombre    | varchar(50) | YES  |     | NULL    |       |
+| creditos  | varchar(50) | YES  |     | NULL    |       |
+| semestres | int(11)     | YES  |     | NULL    |       |
+| email     | varchar(50) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0428 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table  carrera rename creditos to credito;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to credito' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table carrera change semestres semestre int;
+Query OK, 0 rows affected (0.1887 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table carrera drop email;
+Query OK, 0 rows affected (0.0883 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table add column area varchar(50);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'add column area varchar(50)' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table carrera add column area varchar(50);
+Query OK, 0 rows affected (0.1450 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc table carrera;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table carrera' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc carrera;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| creditos | varchar(50) | YES  |     | NULL    |       |
+| semestre | int(11)     | YES  |     | NULL    |       |
+| area     | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0055 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > insert into carrera values('Sistemas', 500, 9, 'Sistemas y Computacion');
+Query OK, 1 row affected (0.0493 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > insert into carrera values('Sistemas, 283, 5, 'Sistemas y computacion');
+                                         ... insert into carrera values('sistemas', 877, 5, 'sistemas y computacion');
+                                         ... ;
+                                         ... desc carrera;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Sistemas y computacion');
+insert into carrera values('sistemas', 877, 5, 'sistem' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > insert into carrera values('sistemas', 873, 8, 'sistemas y computacion');
+Query OK, 1 row affected (0.0254 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc carrera;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| creditos | varchar(50) | YES  |     | NULL    |       |
+| semestre | int(11)     | YES  |     | NULL    |       |
+| area     | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0048 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > select * from carrera;
++----------+----------+----------+------------------------+
+| nombre   | creditos | semestre | area                   |
++----------+----------+----------+------------------------+
+| Sistemas | 500      |        9 | Sistemas y Computacion |
+| sistemas | 873      |        8 | sistemas y computacion |
++----------+----------+----------+------------------------+
+2 rows in set (0.0003 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > create table carreraaaa like carrera;
+Query OK, 0 rows affected (0.0685 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc carreraaaa;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| creditos | varchar(50) | YES  |     | NULL    |       |
+| semestre | int(11)     | YES  |     | NULL    |       |
+| area     | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.0062 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > show tab les;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tab les' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > show tables;
++-------------------------+
+| Tables_in_estudiantes_1 |
++-------------------------+
+| carrera                 |
+| carreraaaa              |
++-------------------------+
+2 rows in set (0.0005 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > create table horario(
+                                         ... materia varchar(50),
+                                         ... salon varchar (50),
+                                         ... profesor varchar(50),
+                                         ... hora time,
+                                         ... dia date,
+                                         ... no_control varchar(50),
+                                         ... carrera varchar(50),
+                                         ... );
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 9
+
+ MySQL  localhost:3306  estudiantes_1  SQL > create table horario(
+                                         ... materia varchar(50),
+                                         ... salon varchar(10),
+                                         ... profesor varchar(50),
+                                         ... hora,
+                                         ... date,
+                                         ... no_control varchar(10),
+                                         ... carrera varchar(50));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '
+date,
+no_control varchar(10),
+carrera varchar(50))' at line 5
+
+ MySQL  localhost:3306  estudiantes_1  SQL > create table horario(materia varchar(50),
+                                         ... salon varchar(10),
+                                         ... profesor varchar(50),
+                                         ... hora time,
+                                         ... dia date,
+                                         ... no_control varchar(10),
+                                         ... carrera varchar(50));
+Query OK, 0 rows affected (0.0737 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > select * from carrera;
++----------+----------+----------+------------------------+
+| nombre   | creditos | semestre | area                   |
++----------+----------+----------+------------------------+
+| Sistemas | 500      |        9 | Sistemas y Computacion |
+| sistemas | 873      |        8 | sistemas y computacion |
++----------+----------+----------+------------------------+
+2 rows in set (0.0006 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > show tables;
++-------------------------+
+| Tables_in_estudiantes_1 |
++-------------------------+
+| carrera                 |
+| carreraaaa              |
+| horario                 |
++-------------------------+
+3 rows in set (0.0005 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table horario add column creditos int;
+Query OK, 0 rows affected (0.0821 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc horario;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| materia    | varchar(50) | YES  |     | NULL    |       |
+| salon      | varchar(10) | YES  |     | NULL    |       |
+| profesor   | varchar(50) | YES  |     | NULL    |       |
+| hora       | time        | YES  |     | NULL    |       |
+| dia        | date        | YES  |     | NULL    |       |
+| no_control | varchar(10) | YES  |     | NULL    |       |
+| carrera    | varchar(50) | YES  |     | NULL    |       |
+| creditos   | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+8 rows in set (0.0060 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table horario add column semestre_actual int;
+Query OK, 0 rows affected (0.0779 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:3306  estudiantes_1  SQL > desc horario;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| materia         | varchar(50) | YES  |     | NULL    |       |
+| salon           | varchar(10) | YES  |     | NULL    |       |
+| profesor        | varchar(50) | YES  |     | NULL    |       |
+| hora            | time        | YES  |     | NULL    |       |
+| dia             | date        | YES  |     | NULL    |       |
+| no_control      | varchar(10) | YES  |     | NULL    |       |
+| carrera         | varchar(50) | YES  |     | NULL    |       |
+| creditos        | int(11)     | YES  |     | NULL    |       |
+| semestre_actual | int(11)     | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+9 rows in set (0.0058 sec)
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table horario modify no_control varchar(10) to no_control varchar(20);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to no_control varchar(20)' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL > alter table horario modify no_control (10) to no_control (20);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10) to no_control (20)' at line 1
+
+ MySQL  localhost:3306  estudiantes_1  SQL >

@@ -1,0 +1,42 @@
+create table materias( 
+nombre varchar(100),
+creditos int,
+horas_teoria int,
+horas_practica int,
+carrera varchar(3);
+ ALumnos
+ID no de control varchar(10)
+nombre varchar(50)
+apellidoP varchar(50)
+apeliidoM varchar(50)
+direccion varchar (100)
+lugar_nacimiento varchar(50)
+pais_nacimiento varchar(50)
+genero varchar(50)
+
+create table Alumnos(
+no_de_control varchar(10),
+nombre varchar(50),
+apellidoP varchar(50),
+apellidoM vaqrchar(50),
+direccion varchar(50),
+lugar_nacimiento varchar(50),
+pais_nacimiento varchar(50),
+genero varchar(50));
+
+create temporary table Temporal(nombre varchar (50));
+
+select * from estudiante;
+Empty set (0.00 sec)
+create table Condenada(no_por_favor int);
+show tables;
+drop table condenada;// lo borra sin más
+
+alter table estudiante add column no_telefono varchar(50);
+desc estudiante;
+
+alter table estudiante add column correo varchar(50) after direccion;
+desc estudiante;
+alter table estudiante drop correo;
+desc estudiante;
+
